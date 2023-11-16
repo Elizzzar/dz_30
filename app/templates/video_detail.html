@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ video.title }}</h1>
+    <a href="{{ video.video_url }}">VIDEO</a>
+
+    <h2>Комментарии:</h2>
+    <ul>
+        {% for comment in video.comments.all %}
+            <li>{{ comment.text }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Добавить комментарий:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}

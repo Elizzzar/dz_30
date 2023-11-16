@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+        {% for article in articles %}
+            <a href="{% url 'article' article.pk %}"><li>{{ article.title }}</li></a>
+            <a href="{% url 'article_update' article.pk %}"><li>update</li></a>
+            <a href="{% url 'article_delete' article.pk %}"><li>delete</li></a>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for video in videos %}
+            <a href="{% url 'video' video.pk %}"><li>{{ video.title }}</li></a>
+            <a href="{% url 'video_update' video.pk %}"><li>update</li></a>
+            <a href="{% url 'video_delete' video.pk %}"><li>delete</li></a>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

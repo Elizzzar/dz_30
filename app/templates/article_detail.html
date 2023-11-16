@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+
+    <h2>Комментарии:</h2>
+    <ul>
+        {% for comment in article.comments.all %}
+            <a href="{% url 'comment' comment.pk %}"><li>{{ comment.text }}</li></a>
+        {% endfor %}
+    </ul> 
+
+    <h3>Добавить комментарий:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}
